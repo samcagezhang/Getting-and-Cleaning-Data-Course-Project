@@ -12,8 +12,11 @@ Getting and Cleaning Data Course Project week 4
 # Step1: Merges the training and the test sets to create one data set.
 # Environment setting
 setwd('E:\\Coursera\\Data Science (JHU)\\Getting and Cleaning Data\\data\\UCI HAR Dataset\\UCI HAR Dataset')
+
 dir()
+
 library(dplyr)
+
 library(data.table)
 
 # 1, read x_train.txt into R;
@@ -24,12 +27,19 @@ library(data.table)
 # 6, read activity_labels.txt into R.
 
 x_train <- read.table('./train/X_train.txt', header = FALSE)
+
 x_test <- read.table('./test/X_test.txt', header = FALSE)
+
 y_train <- read.csv('./train/y_train.txt', sep = ' ', header = FALSE)
+
 y_test <- read.csv('./test/y_test.txt', sep = ' ', header = FALSE)
+
 subject_train <- read.csv('./train/subject_train.txt', sep = ' ', header = FALSE)
+
 features <- read.csv('features.txt', sep = ' ', header = FALSE, stringsAsFactors = FALSE)
+
 activity_labels <- read.csv('activity_labels.txt', sep = ' ', header = FALSE)
+
 names(activity_labels) <- c("no", 'active_labels')
 
 # using features to name the x_train, x_test data frame;
@@ -37,14 +47,19 @@ names(activity_labels) <- c("no", 'active_labels')
 # rbinding y_train and y_test to y_label
 
 x_data <- rbind(x_train, x_test)
+
 y_label <- rbind(y_train, y_test)
 
 features <- mutate(features, features_name = paste(as.character(features$V1), features$V2))
+
 f <- list(features$features_name)
+
 names(x_data) <- transpose(f)
 
 
+
 View(x_data);
+
 #View(y_label); View(features); View(y_train); View(y_test); View(activity_labels); View(subject_train)
 
 
@@ -55,7 +70,9 @@ View(x_data);
 
 ff <- grep('*mean\\(\\)*|*std\\(\\)*', unlist(transpose(f)))
 
+
 extract_data <- x_data[,ff]
+
 View(extract_data)
 
 
@@ -72,16 +89,26 @@ View(extract_data)
 
 y_label <- mutate(y_label, activename = '')
 
+
 y_label[y_label$V1 == 1,]$activename = 'WALKING'
+
 y_label[y_label$V1 == 2,]$activename = 'WALKING_UPSTAIRS'
+
 y_label[y_label$V1 == 3,]$activename = 'WALKING_DOWNSTAIRS'
+
 y_label[y_label$V1 == 4,]$activename = 'SITTING'
+
 y_label[y_label$V1 == 5,]$activename = 'STANDING'
+
 y_label[y_label$V1 == 6,]$activename = 'LAYING'
 
+
 #Then add y_label$activename to x_data with column name: activename.
+
 x_data <- mutate(x_data, activename = y_label$activename)
+
 View(x_data)
+
 
 ##########################################################################
 # Step4:Appropriately labels the data set with descriptive variable names.
@@ -98,6 +125,9 @@ View(x_data)
 #       of each variable for each activity and each subject.
 
 step5_data <- group_by(x_data, activename) %>% summarize_all(mean)
+
 View(step5_data)
+
 write.table(step5_data, file = 'samzhang.txt', row.name=FALSE)
+
 
