@@ -10,6 +10,7 @@
 # PRE-Step1:  Environment setting
 ### unzip the data to work directionary
 setwd('E:\\Coursera\\Data Science (JHU)\\Getting and Cleaning Data\\data\\UCI HAR Dataset\\UCI HAR Dataset')
+
 dir()
 
 ### Library package
@@ -32,6 +33,7 @@ features <- read.csv('features.txt', sep = ' ', header = FALSE, stringsAsFactors
 
 ### 6, read activity_labels.txt into R.
 activity_labels <- read.csv('activity_labels.txt', sep = ' ', header = FALSE)
+
 names(activity_labels) <- c("no", 'active_labels')
 
 # Step1: Merges the training and the test sets to create one data set.
@@ -46,7 +48,9 @@ y_label <- rbind(y_train, y_test)
 ### we can't use funcations like: select, mutate, summarize_all.
 ### Making unique names by pasting the order number and features names together
 features <- mutate(features, features_name = paste(as.character(features$V1), features$V2))
+
 f <- list(features$features_name)
+
 names(x_data) <- transpose(f)
 
 ### View the beautiful tidy data
@@ -60,6 +64,7 @@ View(x_data)
 ff <- grep('*mean\\(\\)*|*std\\(\\)*', unlist(transpose(f)))
 
 extract_data <- x_data[,ff]
+
 View(extract_data)
 
 
@@ -88,6 +93,7 @@ y_label[y_label$V1 == 6,]$activename = 'LAYING'
 
 ###Then add y_label$activename to x_data with column name: activename.
 x_data <- mutate(x_data, activename = y_label$activename)
+
 View(x_data)
 
 ##########################################################################
@@ -102,7 +108,9 @@ View(x_data)
 #       with the average of each variable for each activity and each subject.
 
 ### group_by 'activename' then summarize_all
-step5_data <- group_by(x_data, activename) %>% summarize_all(mean)
+step5_data <- group_by(x_data, activename) %>% 
+              summarize_all(mean)
+
 View(step5_data)
 
 ### outpout the beautiful tidy data
