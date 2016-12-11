@@ -30,9 +30,13 @@ y_test <- read.csv('./test/y_test.txt', sep = ' ', header = FALSE)
 ### 5, read features.txt into R;
 features <- read.csv('features.txt', sep = ' ', header = FALSE, stringsAsFactors = FALSE)
 
-### 6, read activity_labels.txt into R.
+### 6, read activity_labels.txt into R;
 activity_labels <- read.csv('activity_labels.txt', sep = ' ', header = FALSE)
 names(activity_labels) <- c("no", 'active_labels')
+
+### 7, read subject_train.txt / subject_test.txt into R.
+subject_test <- read.csv('./test/subject_test.txt', sep = ' ', header = FALSE)
+subject_train <- read.table('./train/subject_train.txt', header = FALSE)
 
 # Step1: Merges the training and the test sets to create one data set.
 ### rbinding x_train and x_test to x_data
@@ -40,6 +44,9 @@ x_data <- rbind(x_train, x_test)
 
 ### rbinding y_train and y_test to y_label
 y_label <- rbind(y_train, y_test)
+
+### rbinding subject_train and subject_test to subject
+subject <- rbind(subject_train, subject_test)
 
 ### using features to name the x_train, x_test data frame
 ### features$V2 has some duplicated items. If only using features$V2 as column names, 
@@ -50,7 +57,7 @@ f <- list(features$features_name)
 names(x_data) <- transpose(f)
 
 ### View the beautiful tidy data
-View(x_data)
+View(x_data); View(subject)
 
 ##########################################################################
 # Step2:Extracts only the measurements on the mean and standard deviation for each measurement.
@@ -87,24 +94,26 @@ y_label[y_label$V1 == 5,]$activename = 'STANDING'
 y_label[y_label$V1 == 6,]$activename = 'LAYING'
 
 ###Then add y_label$activename to x_data with column name: activename.
-x_data <- mutate(x_data, activename = y_label$activename)
-View(x_data)
+### adds subjectid to x_data
+extract_data <- mutate(extract_data, activename = y_label$activename, subjectid = subject$V1)
+View(extract_data)
 
 ##########################################################################
 # Step4:Appropriately labels the data set with descriptive variable names.
-## !!! WE HAVE NAMED ALL VARIABLES AT STEP 1, THERE IS NO NEED TO NAME variableS HERE AGAIN !!!
-### Making unique names by pasting the order number and features names together
+## getting rid of space, (), uppercase letters, and - from all the variable names.
 ############################################################################
+DataName <- tolower(names(extract_data))
+DataName <- gsub('\\-|\\(|\\)| ', '', DataName)
+names(extract_data) <- DataName
 
 
 ##########################################################################
 # Step5:From the data set in step 4, creates a second, independent tidy data set
 #       with the average of each variable for each activity and each subject.
 
-### group_by 'activename' then summarize_all
-step5_data <- group_by(x_data, activename) %>% summarize_all(mean)
+### group_by 'activename' and 'subjectid' then summarize_all
+step5_data <- group_by(extract_data, activename, subjectid) %>% summarize_all(mean)
 View(step5_data)
 
-### output the beautiful tidy data
+### outpout the beautiful tidy data
 write.table(step5_data, file = 'samzhang.txt', row.name=FALSE)
-
