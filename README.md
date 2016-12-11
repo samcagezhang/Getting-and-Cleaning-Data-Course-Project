@@ -5,7 +5,7 @@
 * Step 4: Appropriately labels the data set with descriptive variable names.
 * Step 5: From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 
-##########################################################################
+---
 # PRE-Step1:  Environment setting
 ### unzip the data to work directionary
 setwd('E:\\Coursera\\Data Science (JHU)\\Getting and Cleaning Data\\data\\UCI HAR Dataset\\UCI HAR Dataset')
