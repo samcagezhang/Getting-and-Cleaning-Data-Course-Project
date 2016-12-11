@@ -2,12 +2,12 @@
 Summarizing the data fields in samzhang.txt.
 ## Identifiers
 * activename
-          * LAYING
-          * SITTING
-          * STANDING
-          * WALKING
-          * WALKING_DOWNSTAIRS
-          * WALKING_UPSTAIRS
+** LAYING
+** SITTING
+** STANDING
+** WALKING
+** WALKING_DOWNSTAIRS
+** WALKING_UPSTAIRS
 
 ## Measurements
 
