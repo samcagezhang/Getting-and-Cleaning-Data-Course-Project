@@ -105,6 +105,6 @@ View(x_data)
 step5_data <- group_by(x_data, activename) %>% summarize_all(mean)
 View(step5_data)
 
-### outpout the beautiful tidy data
+### output the beautiful tidy data
 write.table(step5_data, file = 'samzhang.txt', row.name=FALSE)
 
