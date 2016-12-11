@@ -1,13 +1,13 @@
 #DATA DICTIONARY – 2016 GETTING AND CLEANING DATA COURSE PROJECT
 Summarizing the data fields in samzhang.txt.
 ## Identifiers
-. activename
-          . LAYING
-          . SITTING
-          . STANDING
-          . WALKING
-          . WALKING_DOWNSTAIRS
-          . WALKING_UPSTAIRS
+* activename
+          * LAYING
+          * SITTING
+          * STANDING
+          * WALKING
+          * WALKING_DOWNSTAIRS
+          * WALKING_UPSTAIRS
 
 ## Measurements
 
