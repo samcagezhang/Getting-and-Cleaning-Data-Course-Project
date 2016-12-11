@@ -55,7 +55,7 @@ names(x_data) <- transpose(f)
 ### View the beautiful tidy data
 View(x_data)
 
-##########################################################################
+---
 # Step2:Extracts only the measurements on the mean and standard deviation for each measurement.
 ###Getting all the columns which's names include mean() or std()
 ###Pay attention on the \\(\\) in grep, because "(" ")" are not normal letters in regular expression.
@@ -67,7 +67,7 @@ extract_data <- x_data[,ff]
 View(extract_data)
 
 
-##########################################################################
+---
 # Step3:Uses descriptive activity names to name the activities in the data set
 ###add a new column to y_label which repersents activity_labels
 y_label <- mutate(y_label, activename = '')
@@ -95,14 +95,14 @@ x_data <- mutate(x_data, activename = y_label$activename)
 
 View(x_data)
 
-##########################################################################
+---
 # Step4:Appropriately labels the data set with descriptive variable names.
 ## !!! WE HAVE NAMED ALL VARIABLES AT STEP 1, THERE IS NO NEED TO NAME variableS HERE AGAIN !!!
 ### Making unique names by pasting the order number and features names together
 ############################################################################
 
 
-##########################################################################
+---
 # Step5:From the data set in step 4, creates a second, independent tidy data set
 #       with the average of each variable for each activity and each subject.
 
