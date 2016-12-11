@@ -1,5 +1,8 @@
-#DATA DICTIONARY – 2016 GETTING AND CLEANING DATA COURSE PROJECT
+#DATA DICTIONARY – 2016 
+#GETTING AND CLEANING DATA COURSE PROJECT
+
 Summarizing the data fields in samzhang.txt.
+
 ## Identifiers (1 virable)
 * activename
 
