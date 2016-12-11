@@ -43,36 +43,36 @@
 ---
 # Step3:Uses descriptive activity names to name the activities in the data set
 ###add a new column to y_label which repersents activity_labels
-y_label <- mutate(y_label, activename = '')
+* y_label <- mutate(y_label, activename = '')
 
 ###1<--->WALKING
-y_label[y_label$V1 == 1,]$activename = 'WALKING'
+* y_label[y_label$V1 == 1,]$activename = 'WALKING'
 
 ###2<--->WALKING_UPSTAIRS
-y_label[y_label$V1 == 2,]$activename = 'WALKING_UPSTAIRS'
+* y_label[y_label$V1 == 2,]$activename = 'WALKING_UPSTAIRS'
 
 ###3<--->WALKING_DOWNSTAIRS
-y_label[y_label$V1 == 3,]$activename = 'WALKING_DOWNSTAIRS'
+* y_label[y_label$V1 == 3,]$activename = 'WALKING_DOWNSTAIRS'
 
 ###4<--->SITTING
-y_label[y_label$V1 == 4,]$activename = 'SITTING'
+* y_label[y_label$V1 == 4,]$activename = 'SITTING'
 
 ###5<--->STANDING
-y_label[y_label$V1 == 5,]$activename = 'STANDING'
+* y_label[y_label$V1 == 5,]$activename = 'STANDING'
 
 ###6<--->LAYING
-y_label[y_label$V1 == 6,]$activename = 'LAYING'
+* y_label[y_label$V1 == 6,]$activename = 'LAYING'
 
 ###Then add y_label$activename to x_data with column name: activename.
-x_data <- mutate(x_data, activename = y_label$activename)
+* x_data <- mutate(x_data, activename = y_label$activename)
 
-View(x_data)
+* View(x_data)
 
 ---
 # Step4:Appropriately labels the data set with descriptive variable names.
 ## !!! WE HAVE NAMED ALL VARIABLES AT STEP 1, THERE IS NO NEED TO NAME variableS HERE AGAIN !!!
 ### Making unique names by pasting the order number and features names together
-############################################################################
+
 
 
 ---
@@ -80,13 +80,11 @@ View(x_data)
 #       with the average of each variable for each activity and each subject.
 
 ### group_by 'activename' then summarize_all
-step5_data <- group_by(x_data, activename) %>% 
-              summarize_all(mean)
-
-View(step5_data)
+* step5_data <- group_by(x_data, activename) %>% summarize_all(mean)
+* View(step5_data)
 
 ### outpout the beautiful tidy data
-write.table(step5_data, file = 'samzhang.txt', row.name=FALSE)
+* write.table(step5_data, file = 'samzhang.txt', row.name=FALSE)
 
 
 
