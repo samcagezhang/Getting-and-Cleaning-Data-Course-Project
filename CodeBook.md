@@ -129,6 +129,7 @@ Summarizing the data fields in samzhang.txt.
 * 110 tBodyAccJerk-arCoeff()-Y,1
 * 111 tBodyAccJerk-arCoeff()-Y,2
 * 112 tBodyAccJerk-arCoeff()-Y,3
+* omit from No. 113 to No. 550
 * 551 fBodyBodyGyroJerkMag-maxInds
 * 552 fBodyBodyGyroJerkMag-meanFreq()
 * 553 fBodyBodyGyroJerkMag-skewness()
