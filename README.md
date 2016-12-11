@@ -15,10 +15,12 @@
 ### 4, read y_test.txt into R;
 ### 5, read features.txt into R;
 ### 6, read activity_labels.txt into R.
+### 7, read subject_train.txt / subject_test.txt into R.
 
 # Step1: Merges the training and the test sets to create one data set.
 ### rbinding x_train and x_test to x_data
 ### rbinding y_train and y_test to y_label
+### rbinding subject_train and subject_test to subject
 
 ### using features to name the x_train, x_test data frame
  features$V2 has some duplicated items. If only using features$V2 as column names, 
@@ -64,23 +66,25 @@
 * y_label[y_label$V1 == 6,]$activename = 'LAYING'
 
 ###Then add y_label$activename to x_data with column name: activename.
-* x_data <- mutate(x_data, activename = y_label$activename)
+* extract_data <- mutate(extract_data, activename = y_label$activename, subjectid = subject$V1)
 
 * View(x_data)
 
 ---
 # Step4:Appropriately labels the data set with descriptive variable names.
-## !!! WE HAVE NAMED ALL VARIABLES AT STEP 1, THERE IS NO NEED TO NAME variableS HERE AGAIN !!!
-### Making unique names by pasting the order number and features names together
-
+## getting rid of space, (), uppercase letters, and - from all the variable names.
+############################################################################
+DataName <- tolower(names(extract_data))
+DataName <- gsub('\\-|\\(|\\)| ', '', DataName)
+names(extract_data) <- DataName
 
 
 ---
 # Step5:From the data set in step 4, creates a second, independent tidy data set
 #       with the average of each variable for each activity and each subject.
 
-### group_by 'activename' then summarize_all
-* step5_data <- group_by(x_data, activename) %>% summarize_all(mean)
+### group_by 'activename' and 'subjectid' then summarize_all
+* step5_data <- group_by(extract_data, activename, subjectid) %>% summarize_all(mean)
 * View(step5_data)
 
 ### outpout the beautiful tidy data
