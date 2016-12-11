@@ -4,8 +4,7 @@
 Summarizing the data fields in samzhang.txt.
 
 ## Identifiers (2 virables)
-* subjectid
-       a number represents human volunteers, between 1 to 30.
+* subjectid: a number represents human volunteers from 1 to 30.
 * activename
 
        active_labels: LAYING
