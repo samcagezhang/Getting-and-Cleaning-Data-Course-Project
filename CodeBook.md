@@ -4,10 +4,15 @@ Summarizing the data fields in samzhang.txt.
 * activename
 
        active_labels: LAYING
+       
        active_labels: SITTING
-       active_labels:  STANDING
-       active_labels:  WALKING
-       active_labels:  WALKING_DOWNSTAIRS
+       
+       active_labels: STANDING
+       
+       active_labels: WALKING
+       
+       active_labels: WALKING_DOWNSTAIRS
+       
        active_labels: WALKING_UPSTAIRS
 
 ## Measurements (561 virables)
