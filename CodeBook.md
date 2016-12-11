@@ -1,15 +1,16 @@
 #DATA DICTIONARY – 2016 GETTING AND CLEANING DATA COURSE PROJECT
 Summarizing the data fields in samzhang.txt.
-## Identifiers
+## Identifiers (1 virable)
 * activename
- LAYING
- SITTING
- STANDING
- WALKING
- WALKING_DOWNSTAIRS
- WALKING_UPSTAIRS
 
-## Measurements
+       active_labels: LAYING
+       active_labels: SITTING
+       active_labels:  STANDING
+       active_labels:  WALKING
+       active_labels:  WALKING_DOWNSTAIRS
+       active_labels: WALKING_UPSTAIRS
+
+## Measurements (561 virables)
 
 * 1 tBodyAcc-mean()-X
 * 2 tBodyAcc-mean()-Y
