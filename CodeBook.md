@@ -21,13 +21,14 @@ The experiments have been carried out with a group of 30 volunteers within an ag
 ##Creating the tidy datafile
 
 ###Guide to create the tidy data file
-1, Download, unzip and read the data into R;
-2, Merage train and test data together;
-3, Name the data column with features.txt;
-4, Extract '-mean()' and -std()' columns to form a new data set;
-5, Mutate two columns to extractted data which are activename and subjectid;
-6, Getting rid of ' ', '(', ')' and '-' from all variable names;
-7, Group_by and summarize_all the new data set, output the new data set.
+
+* Download, unzip and read the data into R;
+* Merage train and test data together;
+* Name the data column with features.txt;
+* Extract '-mean()' and -std()' columns to form a new data set;
+* Mutate two columns to extractted data which are activename and subjectid;
+* Getting rid of ' ', '(', ')' and '-' from all variable names;
+* Group_by and summarize_all the new data set, output the new data set.
 
 ##Description of the variables in the tidy.txt file
 General description of the file including:
