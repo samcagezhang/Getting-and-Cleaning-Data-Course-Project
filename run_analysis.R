@@ -116,4 +116,4 @@ step5_data <- group_by(extract_data, activename, subjectid) %>% summarize_all(me
 View(step5_data)
 
 ### outpout the beautiful tidy data
-write.table(step5_data, file = 'samzhang.txt', row.name=FALSE)
+write.table(step5_data, file = 'tidy.txt', row.name=FALSE)
